@@ -37,3 +37,9 @@ export const Heading = styled.h1`
   justify-content: center;
   font-size: 8vw;
 `; 
+
+export const Arrow = styled.img`
+  position: absolute;
+  height: 9vh;
+  bottom: 1vh;
+`;

@@ -1,15 +1,14 @@
-import styled from 'styled-components';
- 
- export const LandingPage = styled.div`
+import styled from "styled-components";
+
+export const LandingPage = styled.div`
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('/img/elegant-monoline-floral.webp');
+  background-image: url("/img/elegant-monoline-floral.webp");
   background-size: 40%;
   background-repeat: repeat;
-  filter: hue-rotate(240deg) ;
+  filter: hue-rotate(240deg);
   opacity: 0.9;
 `;
 
@@ -19,10 +18,10 @@ export const DarkModeLandingPage = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url('/img/elegant-monoline-floral.webp');
+  background-image: url("/img/elegant-monoline-floral.webp");
   filter: hue-rotate(150deg) blur(0.75px) invert(100%);
   opacity: 0.9;
-`; 
+`;
 
 export const Heading = styled.h1`
   min-height: 75vh;
@@ -36,7 +35,7 @@ export const Heading = styled.h1`
   align-items: center;
   justify-content: center;
   font-size: 8vw;
-`; 
+`;
 
 export const Arrow = styled.img`
   position: absolute;
@@ -44,12 +43,40 @@ export const Arrow = styled.img`
   bottom: 1vh;
 `;
 
-export const SmoothScroll = styled.a`
+export const SmoothScrollLanding = styled.a`
   text-decoration: none;
   :active {
     color: currentColor;
   }
-  :visited{
-    color: currentColor
+  :visited {
+    color: currentColor;
+  }
+`;
+
+export const SmoothScrollUp = styled.a`
+  top: 0;
+  display: flex;
+  min-height: 50vh;
+  min-width: 100vw;
+  text-decoration: none;
+  :active {
+    color: currentColor;
+  }
+  :visited {
+    color: currentColor;
+  }
+`;
+
+export const SmoothScrollDown = styled.a`
+  bottom: 0;
+  display: flex;
+  min-height: 50vh;
+  min-width: 100vw;
+  text-decoration: none;
+  :active {
+    color: currentColor;
+  }
+  :visited {
+    color: currentColor;
   }
 `;

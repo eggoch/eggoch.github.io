@@ -9,11 +9,3 @@ import styled from 'styled-components';
   background-color: peachpuff;
   opacity: 0.6;
 `;
-
-export const Wrapper = styled.div`
-::-webkit-scrollbar {
-  width: 50px;
-  height: 8px;
-  background-color: #aaa; /* or add it to the track */
-}
-`;

@@ -43,3 +43,13 @@ export const Arrow = styled.img`
   height: 9vh;
   bottom: 1vh;
 `;
+
+export const SmoothScroll = styled.a`
+  text-decoration: none;
+  :active {
+    color: currentColor;
+  }
+  :visited{
+    color: currentColor
+  }
+`;

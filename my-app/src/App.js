@@ -1,20 +1,26 @@
 // import logo from './logo.svg';
 // import './App.css';
-import arrow from './arrow.svg';
-import { LandingPage, Heading, Arrow } from './landing.style';
-import { Page, Wrapper } from './webpage.style';
+import arrow from "./arrow.svg";
+import { LandingPage, Heading, Arrow, SmoothScroll } from "./landing.style";
+import { Page, } from "./webpage.style";
 
 function App() {
   return (
-    <Wrapper>
-    <LandingPage className="landing-page">
-      <Heading> e g a &nbsp; c h e u n g </Heading>
-      <Arrow src={arrow} alt="arrow"/>
-    </LandingPage>
-    <Page>
-      
-    </Page>
-    </Wrapper>
+    <>
+      <div id="landing">
+        <SmoothScroll href="#page">
+          <LandingPage className="landing-page" id="landing">
+            <Heading> e g a &nbsp; c h e u n g </Heading>
+            <Arrow src={arrow} alt="arrow" />
+          </LandingPage>
+        </SmoothScroll>
+      </div>
+      <div id="page">
+        <SmoothScroll href="#landing">
+          <Page></Page>
+        </SmoothScroll>
+      </div>
+    </>
   );
 }
 

@@ -22,6 +22,8 @@ const contentLinks = [
 function App() {
   const [landing, setLanding] = useState(true);
   const [page, setPage] = useState(false);
+  const [about, setAbout] = useState(false);
+  const [background, setBackground] = useState(true);
 
   return (
     <>
@@ -53,7 +55,6 @@ function App() {
       {page && (
         <Page id="page">
           {/* <ScrollUp href="#landing"> */}
-
           <Banner src="/img/WomansRightQuiltjpg.jpg" />
           {/* <Corridor src="/img/corridor.jpg"/> */}
           {/* </ScrollUp> */}
@@ -61,13 +62,60 @@ function App() {
             <Boxes>
               {content.map((item, index) => {
                 return (
-                  <BoxContainer>
+                  <BoxContainer
+                    href="#music"
+                    onClick={() => {
+                      setAbout(true);
+                      setTimeout(() => {
+                        setPage(false);
+                      }, 750);
+                    }}
+                  >
                     <Box image={contentLinks[index]}>{item}</Box>
                   </BoxContainer>
                 );
               })}
             </Boxes>
           </BoxesWrapper>
+        </Page>
+      )}
+      {about && (
+        <Page id="music" 
+        style={{backgroundImage: background ? "": "url(https://wallpaperaccess.com/full/7290435.jpg)"}}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              background: "#e0b392",
+              width: "100vw",
+              height: "10vh",
+              flexDirection: "column",
+              alignItems: "center",
+              display: "flex",
+              fontSize: "6.5vh",
+              color: "grey",
+            }}
+          >
+            m u s i c
+          </div>
+
+          <iframe
+            src="https://www.soundslice.com/slices/n1dkc/embed/"
+            title="song"
+            style={{
+              width: "80vw",
+              height: "80vh",
+              marginLeft: "10vw",
+              marginTop: "15vh",
+            }}
+            onMouseOver={() => {
+              setTimeout( ()=> {
+                setBackground(false);
+              }, 18500
+              )}
+            }
+          ></iframe>
         </Page>
       )}
     </>

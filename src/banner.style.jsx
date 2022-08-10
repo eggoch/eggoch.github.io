@@ -62,9 +62,16 @@ export const Box = styled.div`
   }
 `;
 
-export const BoxContainer = styled.div`
+export const BoxContainer = styled.a`
   background-color: #FFE0C5;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  text-decoration: none;
+  :active {
+    color: currentColor;
+  }
+  :visited {
+    color: currentColor;
+  }
 `;

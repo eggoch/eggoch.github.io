@@ -1,16 +1,49 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState, useEffect } from "react";
 import "./App.css";
+import { OpeningPage } from "./OpeningImages/OpeningPage";
+import { images } from "./OpeningImages/OpeningImages";
+import { NameTag } from "./OpeningImages/NameTag";
+import { PleaseClick } from "./OpeningImages/PleaseClick";
 
 function App() {
+  const [openingImgIndex, setOpeningImgIndex] = useState(0);
+  const [imagesCompleted, setImagesCompleted] = useState(false);
+  const imagesLength = images.length - 1;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (openingImgIndex !== imagesLength) {
+        setOpeningImgIndex(openingImgIndex + 1);
+      } else {
+        setImagesCompleted(true);
+      }
+    }, openingImgIndex > 5 ? 150: 300);
+    return () => clearTimeout(timer);
+  }, [imagesLength, openingImgIndex, setOpeningImgIndex]);
+
   return (
     <div className="App">
-      <img
-        src={"./globalResources/greenBackground.png"}
-        alt="green background"
-        style={{ width: "100%", height: "100%" }}
-      />
-      <header className="App-header">
+      {/* <img src={"./globalResources/greenBackground.png"} alt="green background"/> */}
+      <>
+        <OpeningPage src={images[openingImgIndex]} />
+        {imagesCompleted && (
+          <>
+          <NameTag
+            src="./globalResources/nameTag.png"
+            alt='newspaper clippings of individual letters spelling out "Ega Cheung"'
+            isTransitioning={false}
+          />
+          <>
+          <PleaseClick>
+            please click anywhere
+          </PleaseClick>
+
+          
+          </>
+          </>
+         )} 
+      </>
+
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -23,7 +56,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }

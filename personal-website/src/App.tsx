@@ -5,7 +5,6 @@ import { images } from "./OpeningImages/OpeningImages";
 import { NameTag } from "./OpeningImages/NameTag";
 import { PleaseClick } from "./OpeningImages/PleaseClick";
 
-
 function App() {
   const [openingImgIndex, setOpeningImgIndex] = useState(0);
   const [imagesCompleted, setImagesCompleted] = useState(false);

@@ -4,6 +4,9 @@ import { OpeningPage } from "./OpeningImages/OpeningPage";
 import { images } from "./OpeningImages/OpeningImages";
 import { NameTag } from "./OpeningImages/NameTag";
 import { PleaseClick } from "./OpeningImages/PleaseClick";
+import { ArrowDown } from "react-feather";
+import { IconHolder } from "./OpeningImages/IconHolder";
+import { Container } from "./Container";
 
 function App() {
   const [openingImgIndex, setOpeningImgIndex] = useState(0);
@@ -21,7 +24,7 @@ function App() {
   }, [imagesLength, openingImgIndex, setOpeningImgIndex]);
 
   return (
-    <div className="App">
+    <Container>
       {/* <img src={"./globalResources/greenBackground.png"} alt="green background"/> */}
       <>
         <OpeningPage src={images[openingImgIndex]} />
@@ -32,32 +35,19 @@ function App() {
             alt='newspaper clippings of individual letters spelling out "Ega Cheung"'
             isTransitioning={false}
           />
+
           <>
           <PleaseClick>
             please click anywhere
           </PleaseClick>
-
-          
+          <IconHolder>
+          <ArrowDown style={{position: "absolute", right: '5%', bottom: '10%'}}/>
+          </IconHolder>
           </>
           </>
          )} 
       </>
-
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
+    </Container>
   );
 }
 

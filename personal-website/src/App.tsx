@@ -1,11 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App" >
-      <img src={"./globalResources/greenBackground.png"} alt="green background"/>
+    <div className="App">
+      <img
+        src={"./globalResources/greenBackground.png"}
+        alt="green background"
+        style={{ width: "100%", height: "100%" }}
+      />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>

@@ -5,49 +5,74 @@ import { images } from "./OpeningImages/OpeningImages";
 import { NameTag } from "./OpeningImages/NameTag";
 import { PleaseClick } from "./OpeningImages/PleaseClick";
 import { ArrowDown } from "react-feather";
-import { IconHolder } from "./OpeningImages/IconHolder";
+import { PleaseWrapper } from "./OpeningImages/PleaseWrapper";
 import { Container } from "./Container";
+import { StripedPaper } from "./OpeningImages/StripedPaper";
+import { GreenBackground } from "./OpeningImages/GreenBackground";
+import { PaperUnravelling } from "./OpeningImages/PaperUnravelling";
+import { NavBar } from "./NavBar/NavBar";
+import { AboutMe } from "./AboutMe.tsx/AboutMe";
 
 function App() {
   const [openingImgIndex, setOpeningImgIndex] = useState(0);
-  const [imagesCompleted, setImagesCompleted] = useState(false);
-  const imagesLength = images.length - 1;
+  const [isOnAbout, setIsOnAbout] = useState(false);
+  const [isNavBarOpen, setIsNavBarOpen] = useState(false);
+  // const [animationComplete, setAnimationComplete] = useState(false);
+
+  const imagesLength = images.length;
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (openingImgIndex !== imagesLength) {
-        setOpeningImgIndex(openingImgIndex + 1);
-      } else {
-        setImagesCompleted(true);
-      }
-    }, openingImgIndex > 5 ? 150: 300);
+    const timer = setTimeout(
+      () => {
+        if (openingImgIndex !== imagesLength - 1) {
+          setOpeningImgIndex(openingImgIndex + 1);
+        } else {
+        }
+      },
+      openingImgIndex > 5 ? 200 : 250,
+    );
     return () => clearTimeout(timer);
   }, [imagesLength, openingImgIndex, setOpeningImgIndex]);
 
   return (
-    <Container>
-      {/* <img src={"./globalResources/greenBackground.png"} alt="green background"/> */}
-      <>
-        <OpeningPage src={images[openingImgIndex]} />
-        {imagesCompleted && (
-          <>
-          <NameTag
-            src="./globalResources/nameTag.png"
-            alt='newspaper clippings of individual letters spelling out "Ega Cheung"'
-            isTransitioning={false}
+    // <Container style={{backgroundImage: "url(/globalResources/greenBackground.png)"}}>
+    <>
+      {/* Opening Page */}
+      <OpeningPage>
+        {openingImgIndex < imagesLength - 1 ? (
+          <PaperUnravelling
+            src={images[openingImgIndex]}
+            alt="crumpled paper unravelling"
           />
-
+        ) : (
           <>
-          <PleaseClick>
-            please click anywhere
-          </PleaseClick>
-          <IconHolder>
-          <ArrowDown style={{position: "absolute", right: '5%', bottom: '10%'}}/>
-          </IconHolder>
+            <StripedPaper
+              src="./globalResources/stripedPaper.png"
+              alt="striped piece of paper"
+            />
+            <NameTag
+              src="./globalResources/nameTag.png"
+              alt='newspaper clippings of individual letters spelling out "Ega Cheung"'
+              isTransitioning={isOnAbout}
+            />
+            <PleaseWrapper isAnimating={true}>
+              <PleaseClick>please click anywhere</PleaseClick>
+              <ArrowDown />
+            </PleaseWrapper>
           </>
-          </>
-         )} 
-      </>
-    </Container>
+        )}
+      </OpeningPage>
+
+      {/* About Me */}
+      <AboutMe>
+        <NavBar
+          isNavBarOpen={isNavBarOpen}
+          onClick={() => {
+            setIsNavBarOpen(!isNavBarOpen);
+          }}
+        />
+      </AboutMe>
+    </>
+    // </Container>
   );
 }
 

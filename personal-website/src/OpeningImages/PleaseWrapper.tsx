@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const PleaseWrapper = styled.div<{ isAnimating?: boolean }>`
+export const PleaseWrapper = styled.div<{
+  isAnimating?: boolean;
+  isTransitioning: boolean;
+}>`
   position: absolute;
   display: flex;
   width: 275px;
@@ -17,6 +20,13 @@ export const PleaseWrapper = styled.div<{ isAnimating?: boolean }>`
     right: 7.5%;
     `}
 
+  ${(props) =>
+    props.isTransitioning &&
+    `
+    animation: disappear 700ms ease-in;
+    opacity: 0;
+    `}
+
   @keyframes smooth {
     0% {
       right: -5%;
@@ -29,6 +39,15 @@ export const PleaseWrapper = styled.div<{ isAnimating?: boolean }>`
     100% {
       right: 7.5%;
       opacity: 1;
+    }
+  }
+
+  @keyframes disappear {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 `;

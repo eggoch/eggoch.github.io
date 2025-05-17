@@ -11,7 +11,7 @@ export const NameTag = styled.img<{ isTransitioning?: boolean }>`
   ${(props) =>
     props.isTransitioning
       ? `
-    transform: rotate(45deg);
+    opacity: 1;
     `
       : `
     animation: smooth 1s ease-in;

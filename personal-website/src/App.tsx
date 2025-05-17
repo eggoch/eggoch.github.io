@@ -19,7 +19,6 @@ function App() {
           setOpeningImgIndex(openingImgIndex + 1);
         } else {
           setIsAnimationComplete(true);
-          console.log(isAnimationComplete);
         }
       },
       openingImgIndex > 5 ? 200 : 250,
@@ -43,7 +42,8 @@ function App() {
         imagesLength={imagesLength}
         isOnAbout={isOnAbout}
         onClick={() => {
-          window.location.href = "#about";
+          setIsOnAbout(true);
+          // window.location.href = "#about";
         }}
       />
 

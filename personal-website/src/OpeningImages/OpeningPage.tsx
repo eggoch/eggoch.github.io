@@ -53,13 +53,14 @@ export const OpeningPage: React.FC<OpeningPageProps> = ({
           <StripedPaper
             src="./globalResources/stripedPaper.png"
             alt="striped piece of paper"
+            isTransitioning={isOnAbout}
           />
           <NameTag
             src="./globalResources/nameTag.png"
             alt='newspaper clippings of individual letters spelling out "Ega Cheung"'
             isTransitioning={isOnAbout}
           />
-          <PleaseWrapper isAnimating={true}>
+          <PleaseWrapper isAnimating={true} isTransitioning={isOnAbout}>
             <PleaseClick>please click anywhere</PleaseClick>
             <ArrowDown />
           </PleaseWrapper>

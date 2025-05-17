@@ -2,10 +2,10 @@ import styled from "styled-components";
 import { Menu, GitHub, Linkedin, X } from "react-feather";
 
 const NavBarWrapper = styled.div<{ isOnAbout: boolean }>`
-  position: absolute;
+  position: fixed;
   height: 100vh;
   z-index: 3;
-  opacity: 00;
+  opacity: 0;
 
   ${(props) =>
     props.isOnAbout &&
@@ -40,7 +40,7 @@ const NavBarImage = styled.div<{ isNavBarOpen: boolean }>`
   ${(props) =>
     props.isNavBarOpen
       ? `animation: open 500ms ease-in;
-    right: -7.5%;
+    right: -5%;
     `
       : `animation: close 650ms ease-in;
     right: 60%;
@@ -51,13 +51,13 @@ const NavBarImage = styled.div<{ isNavBarOpen: boolean }>`
       right: 60%;
     }
     100% {
-      right: -7.5%;
+      right: -5%;
     }
   }
 
   @keyframes close {
     0% {
-      right: -7.5%;
+      right: -5%;
     }
     100% {
       right: 60%;

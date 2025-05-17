@@ -9,24 +9,32 @@ export const StripedPaper = styled.img<{ isTransitioning: boolean }>`
   ${(props) =>
     props.isTransitioning
       ? `
-    animation: toAbout 1.25s ease-in;
+    animation: toAbout 2.5s ease-in;
     top: -11.5%;
     left: -30.25%;
     transform: scale(1.1);
+    opacity: 0;
     `
-      : `transform: rotate(76deg) scale(2.2);
-    `}
+      : `transform: rotate(76deg) scale(2.2);`}
 
   @keyframes toAbout {
     0% {
+      opacity: 1;
       top: 77.5%;
       left: 37.55%;
       transform: rotate(76deg) scale(2.2);
     }
-    100% {
+    50% {
+      opacity: 1;
       top: -11.5%;
       left: -30.25%;
       transform: scale(1.1);
+    }
+    75% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
     }
   }
 `;

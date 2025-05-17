@@ -43,6 +43,7 @@ function App() {
           setIsNavBarOpen(!isNavBarOpen);
         }}
       />
+
       <OpeningPage
         isAnimationComplete={isAnimationComplete}
         openingImgIndex={openingImgIndex}
@@ -54,8 +55,11 @@ function App() {
         }}
       />
 
-      {/* About Me */}
-      <AboutMe></AboutMe>
+      {/* TODO: fix timing */}
+      {isOnAbout && (
+        // about me
+        <AboutMe></AboutMe>
+      )}
     </>
     // </Container>
   );

@@ -1,53 +1,74 @@
 import styled from "styled-components";
 import { Menu, GitHub, Linkedin, X } from "react-feather";
 
-const NavBarWrapper = styled.div`
+const NavBarWrapper = styled.div<{ isOnAbout: boolean }>`
+  position: absolute;
   height: 100vh;
   z-index: 3;
+  opacity: 00;
+
+  ${(props) =>
+    props.isOnAbout &&
+    `
+    animation: appear 1.75s ease-in;
+    opacity: 1;
+    `}
+
+  @keyframes appear {
+    0% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const NavBarImage = styled.div<{ isNavBarOpen: boolean }>`
   position: relative;
-  width: 100%;
   height: 100%;
+  width: 20vw;
+  top: -1.5%;
+  background-position: right;
   background-image: url("/globalResources/stripedPaper.png");
   background-repeat: no-repeat;
-  top: -5%;
-  right: 28.5%;
   transform: scale(1.1);
 
   ${(props) =>
     props.isNavBarOpen
       ? `animation: open 500ms ease-in;
-    right: 18%;
+    right: -7.5%;
     `
       : `animation: close 650ms ease-in;
-    right: 28.5%;
+    right: 60%;
     `}
 
   @keyframes open {
     0% {
-      right: 28.5%;
+      right: 60%;
     }
     100% {
-      right: 18%;
+      right: -7.5%;
     }
   }
 
   @keyframes close {
     0% {
-      right: 18%;
+      right: -7.5%;
     }
     100% {
-      right: 28.5%;
+      right: 60%;
     }
   }
 `;
 
-const MenuWrapper = styled.button`
+const MenuButtonWrapper = styled.button`
   position: relative;
-  top: 12.5%;
-  left: 31.5%;
+  top: 11%;
+  left: 62.5%;
   z-index: 4;
   background-color: transparent;
   border: none;
@@ -60,7 +81,7 @@ const MenuWrapper = styled.button`
 
 const MenuItemWrapper = styled.div<{ isNavBarOpen: boolean }>`
   position: relative;
-  top: 12.5%;
+  top: 15.75%;
   left: 31.5%;
   display: flex;
   flex-direction: column;
@@ -100,14 +121,14 @@ const MenuItemWrapper = styled.div<{ isNavBarOpen: boolean }>`
 const MenuItem = styled.a`
   position: relative;
   font-size: 32px;
-  padding: 1.055%;
-  left: -10%;
+  padding-bottom: 11%;
+  right: 20%;
 `;
 
 const SocialLinkWrapper = styled.div<{ isNavBarOpen: boolean }>`
   position: absolute;
-  bottom: 0.75%;
-  left: 20%;
+  bottom: 4.75%;
+  left: 1.5%;
   display: flex;
   flex-direction: row;
 
@@ -152,17 +173,22 @@ const SocialIconWrapper = styled.div`
 const menuItems = ["About", "Experience", "Contact", "Resume"];
 
 interface NavBarProps {
+  isOnAbout: boolean;
   isNavBarOpen: boolean;
   onClick: () => void | null;
 }
 
-export const NavBar: React.FC<NavBarProps> = ({ isNavBarOpen, onClick }) => {
+export const NavBar: React.FC<NavBarProps> = ({
+  isOnAbout,
+  isNavBarOpen,
+  onClick,
+}) => {
   return (
-    <NavBarWrapper>
+    <NavBarWrapper isOnAbout={isOnAbout}>
       <NavBarImage isNavBarOpen={isNavBarOpen}>
-        <MenuWrapper onClick={onClick}>
+        <MenuButtonWrapper onClick={onClick}>
           {isNavBarOpen ? <X size={32} /> : <Menu size={32} />}
-        </MenuWrapper>
+        </MenuButtonWrapper>
         <MenuItemWrapper isNavBarOpen={isNavBarOpen}>
           {menuItems.map((menuItem) => {
             return <MenuItem>{menuItem}</MenuItem>;

@@ -10,11 +10,12 @@ export const StripedPaper = styled.img<{ isTransitioning: boolean }>`
     props.isTransitioning
       ? `
     animation: toAbout 1.25s ease-in;
-    top: -5%;
-    left: -31.5%;
+    top: -11.5%;
+    left: -30.25%;
     transform: scale(1.1);
     `
-      : `transform: rotate(76deg) scale(2.2);`}
+      : `transform: rotate(76deg) scale(2.2);
+    `}
 
   @keyframes toAbout {
     0% {
@@ -23,8 +24,8 @@ export const StripedPaper = styled.img<{ isTransitioning: boolean }>`
       transform: rotate(76deg) scale(2.2);
     }
     100% {
-      top: -5%;
-      left: -31.5%;
+      top: -11.5%;
+      left: -30.25%;
       transform: scale(1.1);
     }
   }

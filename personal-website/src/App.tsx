@@ -36,6 +36,13 @@ function App() {
     // <Container style={{backgroundImage: "url(/globalResources/greenBackground.png)"}}>
     <>
       {/* Opening Page */}
+      <NavBar
+        isOnAbout={isOnAbout}
+        isNavBarOpen={isNavBarOpen}
+        onClick={() => {
+          setIsNavBarOpen(!isNavBarOpen);
+        }}
+      />
       <OpeningPage
         isAnimationComplete={isAnimationComplete}
         openingImgIndex={openingImgIndex}
@@ -48,16 +55,7 @@ function App() {
       />
 
       {/* About Me */}
-      <AboutMe>
-        <a id="about">
-          <NavBar
-            isNavBarOpen={isNavBarOpen}
-            onClick={() => {
-              setIsNavBarOpen(!isNavBarOpen);
-            }}
-          />
-        </a>
-      </AboutMe>
+      <AboutMe></AboutMe>
     </>
     // </Container>
   );

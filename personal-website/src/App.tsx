@@ -19,35 +19,43 @@ function App() {
           setOpeningImgIndex(openingImgIndex + 1);
         } else {
           setIsAnimationComplete(true);
-          console.log(isAnimationComplete)
+          console.log(isAnimationComplete);
         }
       },
       openingImgIndex > 5 ? 200 : 250,
     );
     return () => clearTimeout(timer);
-  }, [imagesLength, openingImgIndex, setOpeningImgIndex, isAnimationComplete, setIsAnimationComplete]);
+  }, [
+    imagesLength,
+    openingImgIndex,
+    setOpeningImgIndex,
+    isAnimationComplete,
+    setIsAnimationComplete,
+  ]);
 
   return (
     // <Container style={{backgroundImage: "url(/globalResources/greenBackground.png)"}}>
     <>
       {/* Opening Page */}
       <OpeningPage
-      isAnimationComplete = {isAnimationComplete}
-      openingImgIndex={openingImgIndex}
-      imagesLength={imagesLength}
-      isOnAbout={isOnAbout}
-      onClick={() => {window.location.href = "#about"}}
+        isAnimationComplete={isAnimationComplete}
+        openingImgIndex={openingImgIndex}
+        imagesLength={imagesLength}
+        isOnAbout={isOnAbout}
+        onClick={() => {
+          window.location.href = "#about";
+        }}
       />
-      
+
       {/* About Me */}
       <AboutMe>
         <a id="about">
-        <NavBar
-          isNavBarOpen={isNavBarOpen}
-          onClick={() => {
-            setIsNavBarOpen(!isNavBarOpen);
-          }}
-        />
+          <NavBar
+            isNavBarOpen={isNavBarOpen}
+            onClick={() => {
+              setIsNavBarOpen(!isNavBarOpen);
+            }}
+          />
         </a>
       </AboutMe>
     </>

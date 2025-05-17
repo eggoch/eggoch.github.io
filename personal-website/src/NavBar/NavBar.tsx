@@ -8,7 +8,7 @@ const NavBarWrapper = styled.div`
 
 const NavBarImage = styled.div<{ isNavBarOpen: boolean }>`
   position: relative;
-  weidth: 100%;
+  width: 100%;
   height: 100%;
   background-image: url("/globalResources/stripedPaper.png");
   background-repeat: no-repeat;
@@ -44,7 +44,7 @@ const NavBarImage = styled.div<{ isNavBarOpen: boolean }>`
   }
 `;
 
-const MenuWrapper = styled.button<{ isNavBarOpen: boolean }>`
+const MenuWrapper = styled.button`
   position: relative;
   top: 12.5%;
   left: 31.5%;
@@ -52,29 +52,9 @@ const MenuWrapper = styled.button<{ isNavBarOpen: boolean }>`
   background-color: transparent;
   border: none;
 
-  ${(props) =>
-    props.isNavBarOpen
-      ? `animation: fadeIn 150ms ease-in;
-    opacity: 0;`
-      : `animation: fadeOut 150ms ease-in;
-    opacity: 1;`}
-
-  @keyframes fadeOut {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  :hover {
+    cursor: pointer;
+    opacity: 0.5;
   }
 `;
 
@@ -85,6 +65,11 @@ const MenuItemWrapper = styled.div<{ isNavBarOpen: boolean }>`
   display: flex;
   flex-direction: column;
   opacity: 0;
+
+  :hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 
   ${(props) =>
     props.isNavBarOpen
@@ -125,6 +110,11 @@ const SocialLinkWrapper = styled.div<{ isNavBarOpen: boolean }>`
   left: 20%;
   display: flex;
   flex-direction: row;
+
+  :hover {
+    cursor: pointer;
+    opacity: 0.5;
+  }
 
   ${(props) =>
     props.isNavBarOpen
@@ -170,8 +160,8 @@ export const NavBar: React.FC<NavBarProps> = ({ isNavBarOpen, onClick }) => {
   return (
     <NavBarWrapper>
       <NavBarImage isNavBarOpen={isNavBarOpen}>
-        <MenuWrapper isNavBarOpen={isNavBarOpen} onClick={onClick}>
-          <Menu size={32} />
+        <MenuWrapper onClick={onClick}>
+          {isNavBarOpen ? <X size={32} /> : <Menu size={32} />}
         </MenuWrapper>
         <MenuItemWrapper isNavBarOpen={isNavBarOpen}>
           {menuItems.map((menuItem) => {

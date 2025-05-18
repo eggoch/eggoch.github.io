@@ -8,7 +8,10 @@ import { PleaseWrapper } from "./PleaseWrapper";
 import { StripedPaper } from "./StripedPaper";
 import { PaperUnravelling } from "./PaperUnravelling";
 
-export const OpeningPageWrapper = styled.div<{ isAnimationComplete: boolean }>`
+export const OpeningPageWrapper = styled.div<{
+  isAnimationComplete: boolean;
+  isOnAbout: boolean;
+}>`
   position: ${(props) => (props.isAnimationComplete ? "sticky" : `relative`)};
   width: 100%;
   height: 100vh;
@@ -18,6 +21,7 @@ export const OpeningPageWrapper = styled.div<{ isAnimationComplete: boolean }>`
 
   ${(props) =>
     props.isAnimationComplete &&
+    !props.isOnAbout &&
     `:hover {
       cursor: pointer;
     }`}
@@ -42,6 +46,8 @@ export const OpeningPage: React.FC<OpeningPageProps> = ({
     <OpeningPageWrapper
       onClick={onClick}
       isAnimationComplete={isAnimationComplete}
+      isOnAbout={isOnAbout}
+      id="home"
     >
       {openingImgIndex < imagesLength - 1 ? (
         <PaperUnravelling

@@ -123,6 +123,8 @@ const MenuItem = styled.a`
   font-size: 32px;
   padding-bottom: 11%;
   right: 20%;
+  color: inherit;
+  text-decoration: none;
 `;
 
 const SocialLinkWrapper = styled.div<{ isNavBarOpen: boolean }>`
@@ -163,14 +165,16 @@ const SocialLinkWrapper = styled.div<{ isNavBarOpen: boolean }>`
   }
 `;
 
-const SocialIconWrapper = styled.div`
+const SocialIconWrapper = styled.a`
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 32px;
+  color: inherit;
 `;
 
-const menuItems = ["About", "Experience", "Contact", "Resume"];
+const menuItems = ["Home", "About", "Experience", "Contact", "Resume"];
+const ids = ["home", "about", "experience", "contact", "resume"];
 
 interface NavBarProps {
   isOnAbout: boolean;
@@ -190,15 +194,22 @@ export const NavBar: React.FC<NavBarProps> = ({
           {isNavBarOpen ? <X size={32} /> : <Menu size={32} />}
         </MenuButtonWrapper>
         <MenuItemWrapper isNavBarOpen={isNavBarOpen}>
-          {menuItems.map((menuItem) => {
-            return <MenuItem>{menuItem}</MenuItem>;
+          {menuItems.map((menuItem, menuIndex) => {
+            return (
+              <MenuItem onClick={onClick} href={"#" + ids[menuIndex]}>
+                {menuItem}
+              </MenuItem>
+            );
           })}
         </MenuItemWrapper>
         <SocialLinkWrapper isNavBarOpen={isNavBarOpen}>
-          <SocialIconWrapper>
+          <SocialIconWrapper
+            href="http://www.linkedin.com/in/ega-cheung-a8791520b"
+            target="_blank"
+          >
             <Linkedin size={32} />
           </SocialIconWrapper>
-          <SocialIconWrapper>
+          <SocialIconWrapper href="https://github.com/eggoch" target="_blank">
             <GitHub size={32} />
           </SocialIconWrapper>
         </SocialLinkWrapper>

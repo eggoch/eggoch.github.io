@@ -51,14 +51,13 @@ function App() {
         isOnAbout={isOnAbout}
         onClick={() => {
           setIsOnAbout(true);
-          // window.location.href = "#about";
         }}
       />
 
       {/* TODO: fix timing */}
       {isOnAbout && (
         // about me
-        <AboutMe></AboutMe>
+        <AboutMe id="about"></AboutMe>
       )}
     </>
     // </Container>
